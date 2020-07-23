@@ -7,10 +7,12 @@ public class PlayerController : MonoBehaviour
 {
     public float bounceForce;
     public Rigidbody rig;
+    public GameObject jumpParticules;
 
-    private Vector3 prevPosition;
+    private Vector3 movement;
     private Vector3 position;
     private float width;
+    private bool end = false;
 
     private void Awake()
     {
@@ -24,7 +26,7 @@ public class PlayerController : MonoBehaviour
         if (rig.velocity.y < 0)
             rig.AddForce(new Vector3(0f, -bounceForce, 0f)); 
 
-        if (Input.touchCount > 0)
+        if (Input.touchCount > 0 && !end)
         {
             rig.constraints = RigidbodyConstraints.None;
 
@@ -35,10 +37,12 @@ public class PlayerController : MonoBehaviour
 
                 pos.x = (pos.x - width) / width;
                 pos.x = pos.x * 2;
-                position = new Vector3(pos.x, transform.position.y, transform.position.z);
 
-                transform.position = position;
-                prevPosition = position;
+                movement.Set(pos.x - transform.position.x, 0f, 0f);
+
+                //position = new Vector3(pos.x, transform.position.y, transform.position.z);
+                //transform.position = position;
+                rig.MovePosition(transform.position + movement);
             }
         }
     }
@@ -46,6 +50,16 @@ public class PlayerController : MonoBehaviour
     private void OnCollisionEnter(Collision collision)
     {
         Debug.Log("je rentre dan sun truc");
+        //effet de text de score
+        GameObject obj = Instantiate(jumpParticules);
+        Destroy(obj, 1f);
         rig.AddForce(new Vector3(0f, bounceForce, 0f));
+        GameInterphase.instance.AddScore();
+    }
+
+    public void StopAll()
+    {
+        rig.constraints = RigidbodyConstraints.FreezeAll;
+        end = true;
     }
 }

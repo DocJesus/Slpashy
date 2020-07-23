@@ -8,7 +8,16 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
-            Destroy(other.gameObject);
+            //freeze le player
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
+            other.GetComponent<PlayerController>().StopAll();
+
+            //petite animation sur la caméra pour dire qu'on est mort
+
+            //stoper l'environement qui bouge
+            EnvironmentMovement.instance.StopMovement();
+            //apparition du canvas de GameOver
+            GameInterphase.instance.SetGameOverInterphase();
         }
     }
 }

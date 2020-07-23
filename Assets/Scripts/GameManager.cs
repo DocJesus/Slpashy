@@ -14,7 +14,9 @@ public class GameManager : MonoBehaviour
         if (instance != null)
         {
             Debug.LogWarning("Double instance GameManager");
+            return;
         }
+        instance = this;
     }
 
     // Update is called once per frame
