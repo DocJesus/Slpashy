@@ -8,6 +8,7 @@ public class DeathZone : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            Debug.Log("Wipe du player");
             //freeze le player
             other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezeAll;
             other.GetComponent<PlayerController>().StopAll();

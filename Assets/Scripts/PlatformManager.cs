@@ -10,17 +10,22 @@ public class PlatformManager : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("collision depuis la platform");
-
-        GameObject obj = Instantiate(pointText);
-        obj.transform.position = invoquePoint.position;
-        Destroy(obj, 1.5f);
+        if (collision.gameObject.CompareTag("Player"))
+        {
+            Debug.Log("collision depuis la platform");
+            GameObject obj = Instantiate(pointText);
+            obj.transform.position = invoquePoint.position;
+            Destroy(obj, 1.5f);
+        }
     }
 
     private void OnTriggerEnter(Collider other)
     {
-        GameObject obj = Instantiate(perfectText);
-        obj.transform.position = invoquePoint.position + new Vector3(0, 1, 0);
-        Destroy(obj, 1.5f);
+        if (other.CompareTag("Player"))
+        {
+            GameObject obj = Instantiate(perfectText);
+            obj.transform.position = invoquePoint.position + new Vector3(0, 1, 0);
+            Destroy(obj, 1.5f);
+        }
     }
 }

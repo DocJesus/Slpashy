@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class BonusState : MonoBehaviour
 {
+    public float speed;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -13,7 +15,7 @@ public class BonusState : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        transform.Rotate(Vector3.up * Time.deltaTime);
+        transform.Rotate(Vector3.up * Time.deltaTime * speed);
     }
 
     private void OnTriggerEnter(Collider other)

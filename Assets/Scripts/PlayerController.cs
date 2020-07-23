@@ -36,9 +36,11 @@ public class PlayerController : MonoBehaviour
                 Vector2 pos = touch.position;
 
                 pos.x = (pos.x - width) / width;
-                pos.x = pos.x * 2;
+                //Debug.Log(pos.x);
+                pos.x = pos.x * 4;
 
-                movement.Set(pos.x - transform.position.x, 0f, 0f);
+                movement.Set(pos.x - transform.position.x, 0f, transform.position.z);
+                //movement = movement.normalized * 5.1f * Time.deltaTime;
 
                 //position = new Vector3(pos.x, transform.position.y, transform.position.z);
                 //transform.position = position;
@@ -49,12 +51,12 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        Debug.Log("je rentre dan sun truc");
-        //effet de text de score
-        GameObject obj = Instantiate(jumpParticules);
-        Destroy(obj, 1f);
-        rig.AddForce(new Vector3(0f, bounceForce, 0f));
-        GameInterphase.instance.AddScore();
+            GameObject obj = Instantiate(jumpParticules);
+            obj.transform.position = collision.transform.position;
+            Destroy(obj, 1f);
+            GameInterphase.instance.AddScore();
+        rig.velocity = Vector3.zero;
+        rig.AddForce(new Vector3(0f, bounceForce * 7.5f, 0f));
     }
 
     public void StopAll()

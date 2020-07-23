@@ -16,6 +16,7 @@ public class GameInterphase : MonoBehaviour
     public GameObject tutoriel;
     public Text scoreText;
     public Text gameOverScoreText;
+    public Text winningScoreText;
     public GameObject gameOverPanel;
     public GameObject winningPanel;
 
@@ -68,12 +69,15 @@ public class GameInterphase : MonoBehaviour
 
     public void SetWinningInterphase()
     {
-        winningPanel.SetActive(false);
+        winningScoreText.text = scoreText.text;
+        winningPanel.SetActive(true);
+        //mettre la coroutine pour que le score s'affiche bien
     }
 
     public void AddScore()
     {
-        score += 1;
+        if (EnvironmentMovement.instance.movement)
+            score += 1;
     }
 
     public void AddBonuses()

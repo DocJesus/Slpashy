@@ -4,24 +4,13 @@ using UnityEngine;
 
 public class WinningLevel : MonoBehaviour
 {
-    // Start is called before the first frame update
-    void Start()
-    {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-
     private void OnTriggerEnter(Collider other)
     {
-        if (other.CompareTag("player"))
+        if (other.CompareTag("Player"))
         {
             EnvironmentMovement.instance.StopMovement();
             GameInterphase.instance.SetWinningInterphase();
+            other.tag = "Untagged";
         }
     }
 }
