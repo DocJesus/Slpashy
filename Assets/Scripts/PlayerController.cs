@@ -58,7 +58,9 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-        audioSource.PlayOneShot(sound);
+        if (EnvironmentMovement.instance.movement)
+           audioSource.PlayOneShot(sound);
+
         GameObject obj = Instantiate(jumpParticules);
         obj.transform.position = collision.transform.position;
         Destroy(obj, 1f);
