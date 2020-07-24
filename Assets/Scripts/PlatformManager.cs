@@ -8,22 +8,49 @@ public class PlatformManager : MonoBehaviour
     public GameObject perfectText;
     public Transform invoquePoint;
 
-    private Animator anim;
+    private Transform trans;
 
     private void Start()
     {
-        anim = GetComponent<Animator>();
+        trans = GetComponent<Transform>();
     }
 
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            //set l'animation
-            anim.SetTrigger("Jumped");
+            StartCoroutine(JumpAnim());
             GameObject obj = Instantiate(pointText);
             obj.transform.position = invoquePoint.position;
             Destroy(obj, 1.5f);
+        }
+    }
+
+    IEnumerator JumpAnim()
+    {
+        float t = 0f;
+        Vector3 newScale = Vector3.zero;
+        Vector3 newPos = Vector3.zero;
+
+        while (t < 1)
+        {
+            t += Time.deltaTime;
+
+            if (trans.localScale.x < 2 && trans.localScale.z < 2)
+            {
+                newScale.Set(trans.localScale.x + t, trans.localScale.y, trans.localScale.z + t);
+                trans.localScale = newScale;
+            }
+
+            if (trans.localScale.x >= 2 && trans.localScale.z >= 2)
+            {
+                newScale.Set(trans.localScale.x - t, trans.localScale.y, trans.localScale.z - t);
+                trans.localScale = newScale;
+                newPos.Set(trans.position.x, trans.position.y - t, trans.position.z);
+                trans.position = newPos;
+            }
+
+            yield return 0;
         }
     }
 
