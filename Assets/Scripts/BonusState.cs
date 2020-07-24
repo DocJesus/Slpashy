@@ -5,11 +5,14 @@ using UnityEngine;
 public class BonusState : MonoBehaviour
 {
     public float speed;
+    public AudioClip sound;
+
+    private AudioSource audioSource;
 
     // Start is called before the first frame update
     void Start()
     {
-        
+        audioSource = GetComponent<AudioSource>();
     }
 
     // Update is called once per frame
@@ -22,9 +25,10 @@ public class BonusState : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            audioSource.PlayOneShot(sound);
             GameInterphase.instance.AddBonuses();
             //effet de particules de ses morts
-            Destroy(gameObject);
+            Destroy(gameObject, 0.6f);
         }
     }
 }

@@ -8,11 +8,13 @@ public class PlayerController : MonoBehaviour
     public float bounceForce;
     public Rigidbody rig;
     public GameObject jumpParticules;
+    public AudioClip sound;
 
     private Vector3 movement;
     private Vector3 position;
     private float width;
     private bool end = false;
+    private AudioSource audioSource;
 
     private void Awake()
     {
@@ -20,11 +22,16 @@ public class PlayerController : MonoBehaviour
         position = transform.position;
     }
 
+    private void Start()
+    {
+        audioSource = GetComponent<AudioSource>();
+    }
+
     // Update is called once per frame
     void Update()
     {
         if (rig.velocity.y < 0)
-            rig.AddForce(new Vector3(0f, -bounceForce, 0f)); 
+            rig.AddForce(new Vector3(0f, -bounceForce, 0f));
 
         if (Input.touchCount > 0 && !end)
         {
@@ -51,10 +58,11 @@ public class PlayerController : MonoBehaviour
 
     private void OnCollisionEnter(Collision collision)
     {
-            GameObject obj = Instantiate(jumpParticules);
-            obj.transform.position = collision.transform.position;
-            Destroy(obj, 1f);
-            GameInterphase.instance.AddScore();
+        audioSource.PlayOneShot(sound);
+        GameObject obj = Instantiate(jumpParticules);
+        obj.transform.position = collision.transform.position;
+        Destroy(obj, 1f);
+        GameInterphase.instance.AddScore();
         rig.velocity = Vector3.zero;
         rig.AddForce(new Vector3(0f, bounceForce * 7.5f, 0f));
     }
