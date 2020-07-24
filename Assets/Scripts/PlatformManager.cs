@@ -8,18 +8,26 @@ public class PlatformManager : MonoBehaviour
     public GameObject perfectText;
     public Transform invoquePoint;
 
+    private Animator anim;
+
+    private void Start()
+    {
+        anim = GetComponent<Animator>();
+    }
+
     private void OnCollisionEnter(Collision collision)
     {
         if (collision.gameObject.CompareTag("Player"))
         {
-            Debug.Log("collision depuis la platform");
+            //set l'animation
+            anim.SetTrigger("Jumped");
             GameObject obj = Instantiate(pointText);
             obj.transform.position = invoquePoint.position;
             Destroy(obj, 1.5f);
         }
     }
 
-        private void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
@@ -29,5 +37,5 @@ public class PlatformManager : MonoBehaviour
             Destroy(obj, 1.5f);
         }
     }
-    
+
 }

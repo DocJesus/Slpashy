@@ -5,7 +5,6 @@ using UnityEngine;
 public class GameManager : MonoBehaviour
 {
     public GameObject[] dontDestroy;
-    public static GameManager instance;
 
     public bool gameLaunched = false;
 
@@ -14,15 +13,13 @@ public class GameManager : MonoBehaviour
     {
         foreach (GameObject obj in dontDestroy)
         {
-            DontDestroyOnLoad(obj);
+            //si il existe pas alors on l'instancie + on le détruit pas svp
+            if (GameObject.FindGameObjectWithTag("Music") == null)
+            {
+                GameObject tmp = Instantiate(obj);
+                DontDestroyOnLoad(tmp);
+            }
         }
-
-        if (instance != null)
-        {
-            Debug.LogWarning("Double instance GameManager");
-            return;
-        }
-        instance = this;
     }
 
     // Update is called once per frame
