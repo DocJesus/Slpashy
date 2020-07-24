@@ -135,9 +135,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cca776ed8e7ec45947e005b32e5d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointText: {fileID: 3856917506249420220, guid: 0211208255c14564c835baa156343229,
+  pointText: {fileID: 3413264859215207190, guid: 0211208255c14564c835baa156343229,
     type: 3}
-  perfectText: {fileID: 7694768833985008682, guid: 8e0fa8f93c549944babd7803fca5a8e7,
+  perfectText: {fileID: 1202548104925439635, guid: 8e0fa8f93c549944babd7803fca5a8e7,
     type: 3}
   invoquePoint: {fileID: 1680160098}
 --- !u!1 &8948165300341496014
@@ -324,8 +324,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f1cca776ed8e7ec45947e005b32e5d72, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  pointText: {fileID: 3856917506249420220, guid: 0211208255c14564c835baa156343229,
+  pointText: {fileID: 3413264859215207190, guid: 0211208255c14564c835baa156343229,
     type: 3}
-  perfectText: {fileID: 7694768833985008682, guid: 8e0fa8f93c549944babd7803fca5a8e7,
+  perfectText: {fileID: 3413264859215207190, guid: 0211208255c14564c835baa156343229,
     type: 3}
   invoquePoint: {fileID: 1680160098}

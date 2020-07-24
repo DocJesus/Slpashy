@@ -1,0 +1,24 @@
+fileFormatVersion: 2
+guid: 7a79fe97ec48ee9429af730f13a1f971
+TrueTypeFontImporter:
+  externalObjects: {}
+  serializedVersion: 4
+  fontSize: 16
+  forceTextureCase: -2
+  characterSpacing: 0
+  characterPadding: 1
+  includeFontData: 1
+  fontName: ToyBox
+  fontNames:
+  - ToyBox
+  fallbackFontReferences:
+  - {fileID: 12800000, guid: 317bdc92e0244f046bed364eccb99a78, type: 3}
+  - {fileID: 12800000, guid: 5d186bf503658434795ead1051b810fd, type: 3}
+  customCharacters: 
+  fontRenderingMode: 0
+  ascentCalculationMode: 1
+  useLegacyBoundsCalculation: 0
+  shouldRoundAdvanceValue: 1
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

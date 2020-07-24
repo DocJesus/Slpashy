@@ -19,13 +19,15 @@ public class PlatformManager : MonoBehaviour
         }
     }
 
-    private void OnTriggerEnter(Collider other)
+        private void OnTriggerEnter(Collider other)
     {
         if (other.CompareTag("Player"))
         {
+            GameInterphase.instance.AddCombo();
             GameObject obj = Instantiate(perfectText);
             obj.transform.position = invoquePoint.position + new Vector3(0, 1, 0);
             Destroy(obj, 1.5f);
         }
     }
+    
 }

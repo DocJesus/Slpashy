@@ -39,7 +39,7 @@ public class PlayerController : MonoBehaviour
                 //Debug.Log(pos.x);
                 pos.x = pos.x * 4;
 
-                movement.Set(pos.x - transform.position.x, 0f, transform.position.z);
+                movement.Set(pos.x - transform.position.x, 0f, 0f);
                 //movement = movement.normalized * 5.1f * Time.deltaTime;
 
                 //position = new Vector3(pos.x, transform.position.y, transform.position.z);
