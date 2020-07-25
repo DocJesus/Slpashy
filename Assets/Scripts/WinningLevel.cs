@@ -8,6 +8,7 @@ public class WinningLevel : MonoBehaviour
     {
         if (other.CompareTag("Player"))
         {
+            other.GetComponent<Rigidbody>().constraints = RigidbodyConstraints.FreezePositionX;
             EnvironmentMovement.instance.StopMovement();
             GameInterphase.instance.SetWinningInterphase();
             other.tag = "Untagged";

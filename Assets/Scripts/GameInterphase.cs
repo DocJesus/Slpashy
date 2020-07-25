@@ -24,6 +24,7 @@ public class GameInterphase : MonoBehaviour
     public Text comboText;
     public float comboTimer;
     public Slider slider;
+    public Animator comboAnim;
 
     public Fadder fader;
 
@@ -157,7 +158,7 @@ public class GameInterphase : MonoBehaviour
 
         if (nbCombo > 1)
         {
-            //comboAnim.SetTrigger("PopUp");
+            comboAnim.SetTrigger("PopUp");
             comboText.enabled = true;
             comboText.text = "Combo X" + nbCombo;
         }

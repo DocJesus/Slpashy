@@ -2699,6 +2699,7 @@ GameObject:
   - component: {fileID: 484280690}
   - component: {fileID: 484280692}
   - component: {fileID: 484280691}
+  - component: {fileID: 484280693}
   m_Layer: 5
   m_Name: Winning
   m_TagString: Untagged
@@ -2776,6 +2777,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 484280689}
   m_CullTransparentMesh: 0
+--- !u!95 &484280693
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 484280689}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 485ff0c8e85f9cd408ed6e6b7f3799ac, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1 &485085654
 GameObject:
   m_ObjectHideFlags: 0
