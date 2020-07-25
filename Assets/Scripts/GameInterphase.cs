@@ -118,7 +118,7 @@ public class GameInterphase : MonoBehaviour
         {
             value += 1;
             slider.value = value;
-            yield return new WaitForSeconds(0.001f);
+            yield return new WaitForSeconds(0.0001f);
         }
     }
 

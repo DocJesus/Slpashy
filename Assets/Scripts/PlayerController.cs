@@ -9,11 +9,17 @@ public class PlayerController : MonoBehaviour
     public Rigidbody rig;
     public GameObject jumpParticules;
     public AudioClip sound;
+    public float speed;
+    public bool end = false;
+
+    private Vector2 startPos;
+    private Vector2 direction;
+    private Vector2 prePos;
 
     private Vector3 movement;
     private Vector3 position;
     private float width;
-    private bool end = false;
+
     private AudioSource audioSource;
 
     private void Awake()
@@ -38,35 +44,63 @@ public class PlayerController : MonoBehaviour
             rig.constraints = RigidbodyConstraints.None;
 
             Touch touch = Input.GetTouch(0);
-            if (touch.phase == TouchPhase.Moved)
+
+            //startPos = touch.position;
+            switch (touch.phase)
             {
-                Vector2 pos = touch.position;
+                case TouchPhase.Began:
+                    prePos = touch.position;
+                    break;
+                case TouchPhase.Moved:
+                    direction = touch.position - prePos;
+                    prePos = touch.position;
+                    break;
+                /*
+            case TouchPhase.Ended:
+                startPos = Vector2.zero;
+                break;
+                */
 
-                pos.x = (pos.x - width) / width;
-                //Debug.Log(pos.x);
-                pos.x = pos.x * 4;
-
-                movement.Set(pos.x - transform.position.x, 0f, 0f);
-                //movement = movement.normalized * 5.1f * Time.deltaTime;
-
-                //position = new Vector3(pos.x, transform.position.y, transform.position.z);
-                //transform.position = position;
-                rig.MovePosition(transform.position + movement);
+                case TouchPhase.Stationary:
+                    direction = Vector2.zero;
+                    //startPos = Vector2.zero;
+                    break;
             }
+
+            //Debug.Log("direction = " + direction);
+
+            //direction = direction.normalized;
+            direction.x = (direction.x * 8) / (width);
+            //direction.x = direction.x / dicoto;
+
+            //Debug.Log("toto = " + direction);
+
+            movement.Set(direction.x, 0f, 0f);
+
+            rig.MovePosition((transform.position + movement * speed * Time.deltaTime));
         }
+    }
+
+    private void FixedUpdate()
+    {
+        //rig.MovePosition(transform.position + movement * speed * Time.deltaTime);
     }
 
     private void OnCollisionEnter(Collision collision)
     {
-        if (EnvironmentMovement.instance.movement)
-           audioSource.PlayOneShot(sound);
+        if (!end)
+        {
+            if (EnvironmentMovement.instance.movement)
+                audioSource.PlayOneShot(sound);
 
-        GameObject obj = Instantiate(jumpParticules);
-        obj.transform.position = collision.transform.position;
-        Destroy(obj, 1f);
-        GameInterphase.instance.AddScore();
+            GameObject obj = Instantiate(jumpParticules);
+            obj.transform.position = collision.transform.position;
+            Destroy(obj, 1f);
+            GameInterphase.instance.AddScore();
+        }
         rig.velocity = Vector3.zero;
         rig.AddForce(new Vector3(0f, bounceForce * 7.5f, 0f));
+
     }
 
     public void StopAll()

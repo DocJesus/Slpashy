@@ -8,6 +8,8 @@ public class EnvironmentMovement : MonoBehaviour
     public float speed = 2f;
 
     public bool movement = false;
+
+    [SerializeField]
     private bool end = false;
 
     // Start is called before the first frame update
