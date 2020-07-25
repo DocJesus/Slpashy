@@ -157,6 +157,7 @@ public class GameInterphase : MonoBehaviour
 
         if (nbCombo > 1)
         {
+            //comboAnim.SetTrigger("PopUp");
             comboText.enabled = true;
             comboText.text = "Combo X" + nbCombo;
         }

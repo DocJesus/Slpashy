@@ -2732,7 +2732,7 @@ RectTransform:
   - {fileID: 367161838}
   - {fileID: 102074301}
   m_Father: {fileID: 737182726}
-  m_RootOrder: 5
+  m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -3067,6 +3067,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 0ef776d17888c76458146b44bb724fd9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  clip: {fileID: 8300000, guid: 0a9ba802e101dcb4db8c27618601f3bf, type: 3}
 --- !u!33 &526824672
 MeshFilter:
   m_ObjectHideFlags: 0
@@ -4646,9 +4647,9 @@ RectTransform:
   - {fileID: 1054527569}
   - {fileID: 594906383}
   - {fileID: 1287290564}
+  - {fileID: 1368279565}
   - {fileID: 816146196}
   - {fileID: 484280690}
-  - {fileID: 1368279565}
   - {fileID: 731049498}
   m_Father: {fileID: 0}
   m_RootOrder: 4
@@ -4681,6 +4682,7 @@ MonoBehaviour:
   comboText: {fileID: 1368279566}
   comboTimer: 2
   slider: {fileID: 92118815}
+  comboAnim: {fileID: 1368279568}
   fader: {fileID: 731049501}
   star1: {fileID: 625346935}
   star2: {fileID: 498349231}
@@ -4875,6 +4877,7 @@ GameObject:
   - component: {fileID: 816146196}
   - component: {fileID: 816146198}
   - component: {fileID: 816146197}
+  - component: {fileID: 816146199}
   m_Layer: 5
   m_Name: GameOver
   m_TagString: Untagged
@@ -4900,7 +4903,7 @@ RectTransform:
   - {fileID: 1295500914}
   - {fileID: 92118814}
   m_Father: {fileID: 737182726}
-  m_RootOrder: 4
+  m_RootOrder: 5
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 1, y: 1}
@@ -4944,6 +4947,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 816146195}
   m_CullTransparentMesh: 0
+--- !u!95 &816146199
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 816146195}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 39aa2f4daee264d4ab5ca2f1bacd6094, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &821395056
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -7739,6 +7761,7 @@ GameObject:
   - component: {fileID: 1368279565}
   - component: {fileID: 1368279567}
   - component: {fileID: 1368279566}
+  - component: {fileID: 1368279568}
   m_Layer: 5
   m_Name: ComboText
   m_TagString: Untagged
@@ -7758,11 +7781,11 @@ RectTransform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 737182726}
-  m_RootOrder: 6
+  m_RootOrder: 4
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 1}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 213.5, y: -382}
+  m_AnchoredPosition: {x: 238.49997, y: -382}
   m_SizeDelta: {x: 389.7, y: 119}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1368279566
@@ -7807,6 +7830,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1368279564}
   m_CullTransparentMesh: 0
+--- !u!95 &1368279568
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1368279564}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 4dd17a4b4b4a7f54297810763552e68b, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!1001 &1369631014
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8454,11 +8496,11 @@ MonoBehaviour:
       Version=1.0.0.0, Culture=neutral, PublicKeyToken=null
   m_FontData:
     m_Font: {fileID: 12800000, guid: 317bdc92e0244f046bed364eccb99a78, type: 3}
-    m_FontSize: 94
+    m_FontSize: 100
     m_FontStyle: 0
     m_BestFit: 0
-    m_MinSize: 10
-    m_MaxSize: 97
+    m_MinSize: 9
+    m_MaxSize: 102
     m_Alignment: 4
     m_AlignByGeometry: 0
     m_RichText: 1
